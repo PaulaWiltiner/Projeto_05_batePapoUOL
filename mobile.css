@@ -4,6 +4,37 @@
         box-sizing: border-box;
     }
 
+
+    .fundo_contatos {
+        background-color: rgba(54, 50, 50, 0.6);
+        position: absolute;
+        z-index:4;
+        top:0px;
+        left:0px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .contatos {
+        background-color: #ffffff;
+        position: absolute;
+        z-index:5;
+        top:0px;
+        right:0px;
+        height: 100%;
+        width: 65%;
+    }
+
+    .titulo_contatos {
+        background-color: #ffffff;
+        height: 45px;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+    }
+
     input {
         height: 50px;
         width: 100%;
@@ -38,12 +69,13 @@
         margin-right: 5px;
     }
 
+
     .menssagem.cinza2 {
         background-color: #DCDCDC;
     }
     
 
-    .menssagem.vermelho {
+    .menssagem.rosa {
         background-color: #FFDEDE;
     }
 
@@ -53,6 +85,7 @@
         flex-direction: column;
         flex-wrap: wrap;
         font-family: 'Roboto', sans-serif;
+        position: relative;
     }
 
     .barra_superior {
@@ -68,7 +101,7 @@
         box-shadow: 0.5px 0.5px 10px 0.5px rgb(160, 152, 152);
     }
 
-    .container {
+    .chat {
         width: 100%;
         margin-top: 110px;
         margin-bottom: 100px;

@@ -16,44 +16,20 @@
 
   <div class="barra_superior">
     <img src="imagens/logo_UOL.png"/>
-    <ion-icon class="icone_people" name="people"></ion-icon>
+    <ion-icon onclick="contatos()" class="icone_people" name="people"></ion-icon>
   </div>
 
-  <div class="container">
-
-    <div class="menssagem">
-      <p> <spam class="cinza" >(09:21:45) </spam>    <strong>João</strong> entra na sala... </p>
-    </div>
-
-    <div class="menssagem cinza2">
-      <p> <spam class="cinza" >(09:21:45) </spam>   <strong>João</strong> entra na sala...</p>
-    </div>
-
-    <div class="menssagem">
-      <p> <spam class="cinza" >(09:21:45) </spam>   <strong>João</strong> entra na sala...</p>
-    </div>
-    
-    <div class="menssagem vermelho">
-      <p><spam class="cinza" >(09:21:45) </spam> <strong>João</strong> reservadamente para <strong>Maria</strong> :  Oi gatinha quer sair? </p>
-    </div>
-
-    <div class="menssagem vermelho">
-      <p><spam class="cinza" >(09:21:45) </spam> <strong>João</strong> reservadamente para <strong>Maria</strong> :  Oi gatinha quer sair? </p>
-    </div>
-    <div class="menssagem vermelho">
-      <p><spam class="cinza" >(09:21:45) </spam> <strong>João</strong> reservadamente para <strong>Maria</strong> :  Oi gatinha quer sair? </p>
-    </div>
-    <div class="menssagem vermelho">
-      <p><spam class="cinza" >(09:21:45) </spam> <strong>João</strong> reservadamente para <strong>Maria</strong> :  Oi gatinha quer sair? </p>
-    </div>
-  </div>
+  <div class="chat"></div>
 
   <div class="barra_inferior">
-    <input  type="text" placeholder="Escreva aqui...">
-    <button type='submit'><ion-icon class="icone_envio" name="paper-plane-outline"></ion-icon></button>
+    <input  class="texto" type="text" placeholder="Escreva aqui...">
+    <button type='submit' onclick="envio()"><ion-icon class="icone_envio" name="paper-plane-outline"></ion-icon></button>
+    <div class="alerta_envio"></div>
   </div>
+  
 
   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
