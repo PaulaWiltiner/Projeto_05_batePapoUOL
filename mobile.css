@@ -36,6 +36,9 @@
         font-size:22px;
     }
 
+    .entrada::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+        color: #d1d4d6;
+      }
 
     .visivel {
         background-color: #ffffff;
@@ -95,6 +98,10 @@
         font-weight: bold;
     }
 
+    .visibilidade{
+        margin-bottom: 40px;
+    }
+
     .contato {
         display: flex;
         align-items: center;
@@ -128,7 +135,7 @@
     }
 
     
-    .texto ::placeholder {
+    .texto::-webkit-input-placeholder {
         color:#000000;
         font-style: italic;
     }

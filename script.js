@@ -8,6 +8,12 @@ let tipo_msg="";
 let aviso_envio="";
 let tipo;
 let lista_contatos;
+let enter = document.querySelector(".texto");
+enter.addEventListener("keyup", function (event) {
+    if (event.keyCode == 13) {
+        envio();
+    }
+});
 
 function aviso() {
     aviso_envio = "Enviando para " + to;
@@ -32,7 +38,6 @@ function postar_contatos(response) {
     let nomes="";
     for (j=0;j<=participantes.length-1;j++){
         let nome=participantes[j].name;
-        console.log(nome)
         nomes = nomes + "<div class='contato' onclick='check_contato(this)'><div class='parteum'><ion-icon class='icone_people_contato' name='person-circle'></ion-icon><h2>"+nome+"</h2></div><img class='img'/></div>"
     }
     lista_contatos=nomes;
@@ -127,13 +132,19 @@ function envio () {
             type: tipo
         }
         let promise = axios.post(apiDriven+"messages", dados);
-        promise.then(buscar_msg);
+        promise.then(reinicio);
         promise.catch(erroEnvio);
         document.querySelector(".input").querySelector("input").value="" ;
         let aviso = document.querySelector(".aviso");
         aviso.innerHTML = "";
         aviso.classList.remove("enviando");
     }
+}
+
+function reinicio(){
+   to="";
+   tipo_msg="";
+   buscar_msg();
 }
 
 function erroEnvio() {
@@ -160,7 +171,7 @@ function expor_msg (response) {
     chat.innerHTML = "";
     let menssagens = response.data;
     setTimeout(buscar_msg, 3000);
-    const cont=menssagens.length-1;
+    let cont=menssagens.length-1;
     for ( i=0 ; i<=cont ; i++ ){
         let menssagem = menssagens[i];
         let tipo = menssagem.type;
