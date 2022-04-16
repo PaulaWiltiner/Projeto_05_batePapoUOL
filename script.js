@@ -7,6 +7,7 @@ let to="";
 let tipo_msg="";
 let aviso_envio="";
 let tipo;
+let lista_contatos;
 
 function aviso() {
     aviso_envio = "Enviando para " + to;
@@ -21,14 +22,36 @@ function aviso() {
     aviso.classList.add("enviando");
 }
 
-function abrir_menu(){
-    aviso()
+function buscar_participantes(){
+    let promise = axios.get(apiDriven+"participants");
+    promise.then(postar_contatos);
+}
+
+function postar_contatos(response) {
+    let participantes = response.data;
+    let nomes="";
+    for (j=0;j<=participantes.length-1;j++){
+        let nome=participantes[j].name;
+        console.log(nome)
+        nomes = nomes + "<div class='contato' onclick='check_contato(this)'><div class='parteum'><ion-icon class='icone_people_contato' name='person-circle'></ion-icon><h2>"+nome+"</h2></div><img class='img'/></div>"
+    }
+    lista_contatos=nomes;
+    expor_infos_menu(lista_contatos)
+}
+
+ function expor_infos_menu(lista_contatos) {
     let fundo = document.querySelector(".fundo");
     fundo.classList.add("fundo_menu");
     fundo.setAttribute("onclick","ocultar()")
     let menu_lateral = document.querySelector(".menu");
     menu_lateral.classList.add("menu_lateral");
-    menu_lateral.innerHTML=" <div class='contatos'><div class='titulo_contatos'>Escolha um contato para enviar mensagem:</div><div class='contato' onclick='check_contato(this)'><div class='parteum'><ion-icon class='icone_people_contato' name='people'></ion-icon><h2>Todos</h2></div><img class='img'/></div><div class='contato' onclick='check_contato(this)'><div class='parteum'><ion-icon class='icone_people_contato' name='person-circle'></ion-icon><h2>João</h2></div><img class='img'/></div></div><div class='visibilidade'><div class='titulo_visibilidade'>Escolha a visibilidade:</div><div class='contato' onclick='check_visibilidade(this)'><div class='parteum'><ion-icon class='icone_lock' name='lock-open'></ion-icon><h2>Público</h2></div><img class='img'/></div><div class='contato' onclick='check_visibilidade(this)'><div class='parteum'><ion-icon class='icone_lock' name='lock-closed'></ion-icon><h2>Reservadamente</h2></div><img class='img'/></div></div>";
+    menu_lateral.innerHTML="<div class='contatos'><div class='titulo_contatos'>Escolha um contato para enviar mensagem:</div><div class='contato' onclick='check_contato(this)'><div class='parteum'><ion-icon class='icone_people_contato' name='people'></ion-icon><h2>Todos</h2></div><img class='img'/></div>"+ lista_contatos+"</div><div class='visibilidade'><div class='titulo_visibilidade'>Escolha a visibilidade:</div><div class='contato' onclick='check_visibilidade(this)'><div class='parteum'><ion-icon class='icone_lock' name='lock-open'></ion-icon><h2>Público</h2></div><img class='img'/></div><div class='contato' onclick='check_visibilidade(this)'><div class='parteum'><ion-icon class='icone_lock' name='lock-closed'></ion-icon><h2>Reservadamente</h2></div><img class='img'/></div></div>";
+
+ }
+
+function abrir_menu(){
+    aviso()
+    buscar_participantes()
 }
 
 
@@ -106,7 +129,10 @@ function envio () {
         let promise = axios.post(apiDriven+"messages", dados);
         promise.then(buscar_msg);
         promise.catch(erroEnvio);
-        document.querySelector("input").value="" ;
+        document.querySelector(".input").querySelector("input").value="" ;
+        let aviso = document.querySelector(".aviso");
+        aviso.innerHTML = "";
+        aviso.classList.remove("enviando");
     }
 }
 
@@ -115,16 +141,15 @@ function erroEnvio() {
 }
 
 function entrar () {
-    nome_entrada = prompt("Com qual nome gostaria de entrar no chat ?");
+    nome_entrada = document.querySelector(".tela_entrada").querySelector("input").value;
     let promise = axios.post(apiDriven+"participants", {name: nome_entrada});
-    promise.then(buscar_msg, setInterval(conexao,5000))
+    promise.then(ocultar_tela_entrada, setInterval(conexao,5000))
     promise.catch(tratarErro)
 }
-entrar()
+
 
 function tratarErro () {
     alert("Sinto muito, esse nome já está ativo. Por favor, tente novamente.");
-    entrar();
 }
 
 function conexao () {
@@ -155,6 +180,13 @@ function expor_msg (response) {
             element.scrollIntoView();
         }
     }
+}
+
+function ocultar_tela_entrada() {
+    let tela_entrada = document.querySelector(".tela_entrada");
+    tela_entrada.innerHTML="";
+    tela_entrada.classList.remove("visivel")
+    buscar_msg()
 }
 
 function buscar_msg () {
