@@ -13,18 +13,25 @@
 
 </head>
 <body>
+  <div class="menu">
+   
+  </div>
+
+  <div class="fundo" ></div>
 
   <div class="barra_superior">
     <img src="imagens/logo_UOL.png"/>
-    <ion-icon onclick="contatos()" class="icone_people" name="people"></ion-icon>
+    <ion-icon onclick="abrir_menu()" class="icone_people" name="people"></ion-icon>
   </div>
 
   <div class="chat"></div>
 
   <div class="barra_inferior">
-    <input  class="texto" type="text" placeholder="Escreva aqui...">
-    <button type='submit' onclick="envio()"><ion-icon class="icone_envio" name="paper-plane-outline"></ion-icon></button>
-    <div class="alerta_envio"></div>
+    <div class="input">
+      <input  class="texto" type="text" placeholder="Escreva aqui...">
+      <button type='submit' onclick="envio()"><ion-icon class="icone_envio" name="paper-plane-outline"></ion-icon></button>
+    </div>
+    <div class="aviso"></div>
   </div>
   
 

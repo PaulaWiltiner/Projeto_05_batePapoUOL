@@ -5,7 +5,7 @@
     }
 
 
-    .fundo_contatos {
+    .fundo_menu {
         background-color: rgba(54, 50, 50, 0.6);
         position: absolute;
         z-index:4;
@@ -15,9 +15,9 @@
         width: 100%;
     }
 
-    .contatos {
+    .menu_lateral {
         background-color: #ffffff;
-        position: absolute;
+        position: fixed;
         z-index:5;
         top:0px;
         right:0px;
@@ -25,14 +25,49 @@
         width: 65%;
     }
 
+    .enviando {
+        color: #9c9999;
+        font-size:16px;
+    }
+
     .titulo_contatos {
-        background-color: #ffffff;
-        height: 45px;
-        padding: 15px;
+        height: 80px;
+        padding: 35px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .titulo_visibilidade {
+        height: 30px;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .contato {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top:10px;
+        margin-left: 16px;
+        margin-right: 10px;
+    }
+
+    .parteum {
+        display: flex;
+        align-items: center;
+    }
+
+    .contato h2 {
+        margin-left:5px;
     }
 
     input {
@@ -123,14 +158,29 @@
         bottom:0px;
         left:0px;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
         padding: 15px;
         box-shadow: 0.5px 0.5px 10px 0.5px rgb(160, 152, 152);
     }
 
+    .input{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     .icone_people {
         font-size: 46px;
+    }
+
+    .icone_people_contato {
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+
+    .icone_lock {
+        font-size: 22px;
+        margin-bottom: 5px;
     }
 
     .icone_envio {
