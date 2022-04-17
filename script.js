@@ -154,6 +154,8 @@ function erroEnvio() {
 function entrar () {
     nome_entrada = document.querySelector(".tela_entrada").querySelector("input").value;
     let promise = axios.post(apiDriven+"participants", {name: nome_entrada});
+    let tela = document.querySelector(".tela_entrada");
+    tela.innerHTML="<img class='logo' src='imagens/logo_UOL.png'/><img class='load' src='imagens/load.jpg'/><h3>Entrando...</h3>"
     promise.then(ocultar_tela_entrada, setInterval(conexao,5000))
     promise.catch(tratarErro)
 }
@@ -187,8 +189,8 @@ function expor_msg (response) {
             }
         }
         if (i===cont) {
-            const element = document.querySelector('.id'+i);
-            element.scrollIntoView();
+            let elemento_id = document.querySelector('.id'+i);
+            elemento_id.scrollIntoView();
         }
     }
 }
